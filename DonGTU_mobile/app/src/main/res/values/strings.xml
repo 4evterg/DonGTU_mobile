@@ -3,4 +3,6 @@
     <string name="search_title">Search</string>
     <string name="menu_item_schedule">Расписание</string>
     <string name="menu_item_events">События</string>
+    <string name="login_remember_me">Запомнить меня</string>
+    <string name="login_button">Войти</string>
 </resources>
