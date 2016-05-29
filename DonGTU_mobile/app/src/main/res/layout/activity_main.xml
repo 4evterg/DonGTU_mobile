@@ -21,7 +21,9 @@
                 andriod:id="@+id/toolbar"
                 andriod:layout_width="match_parent"
                 andriod:layout_height="?attr/actionBarSize"
-                andriod:background="?attr/colorPrimary">
+                andriod:background="?attr/colorPrimary"
+                app:titleTextColor="@color/colorWhite">
+
             </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.AppBarLayout>

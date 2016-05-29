@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private void initToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("DonGTU_mobile BETA");
-        toolbar.setTitleTextColor(Color.WHITE);
+//        toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
             @Override
             public boolean onMenuItemClick(MenuItem item) {
