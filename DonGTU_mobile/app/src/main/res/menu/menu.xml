@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--<item-->
+        <!--android:id="@+id/main_activity_menu"-->
+        <!--android:title="@string/main_activity_menu"-->
+        <!--android:orderInCategory="1"-->
+        <!--android:icon="@mipmap/ic_dots_vertical_white_24dp"-->
+        <!--app:showAsAction="ifRoom"/>-->
+
     <item
-        android:id="@+id/search"
-        android:title="@string/search_title"
+        android:id="@+id/first_item"
+        android:title="first_item"
         android:orderInCategory="1"
-        android:icon="@mipmap/ic_dots_vertical_white_24dp"
-        app:showAsAction="ifRoom"/>
+
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/second_item"
+        android:title="second_item"
+        android:orderInCategory="2"
+
+        app:showAsAction="never"/>
+
 </menu>

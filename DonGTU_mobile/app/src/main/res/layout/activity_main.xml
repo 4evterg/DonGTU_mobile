@@ -22,9 +22,20 @@
                 andriod:layout_width="match_parent"
                 andriod:layout_height="?attr/actionBarSize"
                 andriod:background="?attr/colorPrimary"
-                app:titleTextColor="@color/colorWhite">
+                app:titleTextColor="@color/colorWhite" />
 
-            </android.support.v7.widget.Toolbar>
+            <!--
+             tabIndicatorColor - цвет полоски выбранной вкладки
+             tabIndicatorHeight - её толщина
+             -->
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@android:color/white"
+                app:tabIndicatorHeight="6dp"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabTextColor="@android:color/white"/>
 
         </android.support.design.widget.AppBarLayout>
 

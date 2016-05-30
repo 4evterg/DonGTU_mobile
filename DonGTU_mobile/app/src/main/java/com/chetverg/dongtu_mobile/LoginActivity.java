@@ -11,15 +11,22 @@ import android.widget.Button;
  */
 public class LoginActivity extends AppCompatActivity {
 
+    // Объявление формы входа
     private static final int LAYOUT = R.layout.login_activity;
+    // Объявление кнопки входа
     private Button mLoginButton;
 
+
+    //Инициализация формы входа
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Выставление стиля формы по-умолчанию
         setTheme(R.style.AppDefault);
+        //Подключение формы
         setContentView(LAYOUT);
 
+        //
         mLoginButton = (Button)findViewById(R.id.login_button);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
