@@ -2,16 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:textIsSelectable="true"
-        android:id="@+id/login_maintext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="20dp"
-        android:text="@string/app_name"
-        android:textSize="30dp"
-        android:textColor="@color/colorPrimary"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -24,30 +14,46 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center">
+            android:gravity="center_vertical">
+
+            <TextView
+                android:textIsSelectable="true"
+                android:id="@+id/login_maintext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:text="@string/login_app_name"
+                android:textSize="30dp"
+                android:textColor="@color/colorPrimary"/>
 
             <EditText
-                android:layout_width="wrap_content"
+                android:id="@+id/login_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:text="Login"
                 android:ems="10"
-                android:id="@+id/login_name" />
+                android:layout_gravity="start"
+                />
 
             <EditText
-                android:layout_width="wrap_content"
+                android:id="@+id/login_password"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:text="Password"
                 android:ems="10"
-                android:id="@+id/login_password" />
+                android:layout_gravity="start"
+                 />
 
             <CheckBox
+                android:id="@+id/login_remember_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_remember_me"
-                android:id="@+id/login_remember_me"
-                android:layout_gravity="start"/>
+                android:layout_gravity="start"
+                />
 
             <Button
                 android:layout_width="wrap_content"
@@ -56,7 +62,9 @@
                 android:id="@+id/login_button"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/colorWhite"
-                android:layout_marginTop="50dp" />
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_gravity="center_horizontal"
+                />
 
         </LinearLayout>
 

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">DonGTU_mobile BETA</string>
+    <string name="login_app_name">DonGTU_mobile \n BETA</string>
     <string name="main_activity_menu">Меню</string>
     <string name="menu_item_schedule">Расписание</string>
     <string name="menu_item_events">События</string>

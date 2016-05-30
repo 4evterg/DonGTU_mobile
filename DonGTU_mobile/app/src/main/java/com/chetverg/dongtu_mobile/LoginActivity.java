@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Выставление стиля формы по-умолчанию
-        setTheme(R.style.AppDefault);
+        setTheme(R.style.AppLogin);
         //Подключение формы
         setContentView(LAYOUT);
 
