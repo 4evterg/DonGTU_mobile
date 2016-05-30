@@ -12,14 +12,14 @@ import com.chetverg.dongtu_mobile.R;
 /**
  * Created by chetverg on 30.05.16.
  */
-public class ExampleFragment extends Fragment{
-    private static int LAYOUT = R.layout.fragment_example;
+public class TasksFragment extends Fragment{
+    private static int LAYOUT = R.layout.fragment_schedule_tasks;
 
     private View view;
 
-    public static ExampleFragment getInstance(){
+    public static TasksFragment getInstance(){
         Bundle args = new Bundle();
-        ExampleFragment fragment = new ExampleFragment();
+        TasksFragment fragment = new TasksFragment();
         fragment.setArguments(args);
 
         return fragment;
@@ -29,8 +29,6 @@ public class ExampleFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
-
-
 
         return view;
     }

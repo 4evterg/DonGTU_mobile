@@ -1,11 +1,12 @@
 package com.chetverg.dongtu_mobile;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -68,8 +69,32 @@ public class MainActivity extends AppCompatActivity {
 
     private void initNavigationView() {
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+
+        //открыть меню по нажатию на кнопку
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.setDrawerListener(toggle);
+        toggle.syncState();
+
+        //переход на вкладу при нажатии на пункт бокового меню
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                drawerLayout.closeDrawers();
+                switch (item.getItemId()){
+                    case R.id.schedule:
+                        showSecondTab();
+                }
+                return true;
+            }
+        });
     }
 
+    //объявлении и инициализация панели вкладок
+    private void initTabLayout(){
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
+    }
 
     //инициализация вкладок
     private void initTabs() {
@@ -77,11 +102,8 @@ public class MainActivity extends AppCompatActivity {
         TabsPagerFragmentAdapter adapter = new TabsPagerFragmentAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
     }
-    //объявлении и инициализация панели вкладок
-    private void initTabLayout(){
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.setupWithViewPager(viewPager);
 
+    private void showSecondTab(){
+        viewPager.setCurrentItem(Constants.TAB_TWO);
     }
-
 }

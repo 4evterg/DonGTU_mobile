@@ -4,7 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.chetverg.dongtu_mobile.fragments.ExampleFragment;
+import com.chetverg.dongtu_mobile.fragments.TasksFragment;
+import com.chetverg.dongtu_mobile.fragments.TodayFragment;
+import com.chetverg.dongtu_mobile.fragments.WeekFragment;
 
 /**
  * Created by chetverg on 30.05.16.
@@ -32,13 +34,13 @@ public class TabsPagerFragmentAdapter extends FragmentPagerAdapter{
         //Переключение вкладок
         switch (position){
             case 0:
-                return ExampleFragment.getInstance();
+                return TodayFragment.getInstance();
 
             case 1:
-                return ExampleFragment.getInstance();
+                return WeekFragment.getInstance();
 
             case 2:
-                return ExampleFragment.getInstance();
+                return TasksFragment.getInstance();
 
         }
 

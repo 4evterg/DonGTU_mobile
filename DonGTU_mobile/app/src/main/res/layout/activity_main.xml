@@ -42,11 +42,15 @@
         </android.support.design.widget.AppBarLayout>
 
 
-        <!-- ВьюПейжер - отображение конента табов"-->
+        <!-- ВьюПейжер - отображение конента табов"
+        layout_behavior - необходим для нормального отображения контента (баг с залезанием
+        текста на таблейаут)
+        -->
         <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     </android.support.design.widget.CoordinatorLayout>
 
