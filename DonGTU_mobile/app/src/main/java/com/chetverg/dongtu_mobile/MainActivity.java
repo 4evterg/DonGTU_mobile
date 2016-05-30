@@ -3,6 +3,8 @@ package com.chetverg.dongtu_mobile;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,15 +12,21 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.chetverg.dongtu_mobile.adapter.TabsPagerFragmentAdapter;
+
 public class MainActivity extends AppCompatActivity {
 
-    // Объявление формы
+    //объявление формы
     private static final int LAYOUT = R.layout.activity_main;
-
-    // Объявление тулбара
+    //объявление тулбара
     private Toolbar toolbar;
-    // Объявление бокового меню
+    //объявление вкладок
+    private ViewPager viewPager;
     private DrawerLayout drawerLayout;
+
+
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppDefault);
@@ -29,11 +37,13 @@ public class MainActivity extends AppCompatActivity {
         initToolbar();
         //вызов меню
         initNavigationView();
+        //вызов вкладок
+        initTabs();
+        //вызов панели вкладок
+        initTabLayout();
     }
 
-
-
-    // Инициализация тулбара
+    //инициализация тулбара
     private void initToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         //Выставление заголовка тулбара
@@ -48,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.inflateMenu(R.menu.menu);
     }
 
-    // Подключение выпадающего меню
+    //подключение выпадающего меню
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -56,11 +66,22 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-
-
-    // Инициализация бокового меню
     private void initNavigationView() {
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+    }
+
+
+    //инициализация вкладок
+    private void initTabs() {
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        TabsPagerFragmentAdapter adapter = new TabsPagerFragmentAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+    }
+    //объявлении и инициализация панели вкладок
+    private void initTabLayout(){
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
+
     }
 
 }

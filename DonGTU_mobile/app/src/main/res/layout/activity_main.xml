@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- Тулбар -->
             <android.support.v7.widget.Toolbar
                 xmlns:andriod="http://schemas.android.com/apk/res/android"
                 andriod:id="@+id/toolbar"
@@ -25,6 +26,7 @@
                 app:titleTextColor="@color/colorWhite" />
 
             <!--
+             ТабЛейаут - хранит только табы, не хранит информацию/контент
              tabIndicatorColor - цвет полоски выбранной вкладки
              tabIndicatorHeight - её толщина
              -->
@@ -40,9 +42,15 @@
         </android.support.design.widget.AppBarLayout>
 
 
+        <!-- ВьюПейжер - отображение конента табов"-->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </android.support.design.widget.CoordinatorLayout>
 
-
+    <!-- Боковое меню/панель-->
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation"
         android:layout_width="wrap_content"
