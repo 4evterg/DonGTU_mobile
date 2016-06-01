@@ -35,6 +35,7 @@
                 android:hint="@string/login"
                 android:ems="10"
                 android:layout_gravity="start"
+                android:text="root1234"
                 />
 
             <EditText
@@ -45,6 +46,7 @@
                 android:hint="@string/password"
                 android:ems="10"
                 android:layout_gravity="start"
+                android:text="root1234"
                  />
 
             <CheckBox

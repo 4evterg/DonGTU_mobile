@@ -1,7 +1,9 @@
 package com.chetverg.dongtu_mobile;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -12,8 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.chetverg.dongtu_mobile.adapter.TabsPagerFragmentAdapter;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,13 +33,38 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
 
 
+    //
+    private SQLiteHandler db;
+    private SessionManager session;
 
-
+   /* private TextView Text1;
+    private TextView Text2;
+    private TextView Text3;*/
+    private FloatingActionButton FAB;
 
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(LAYOUT);
+
+        // SqLite database handler
+        db = new SQLiteHandler(getApplicationContext());
+
+        // session manager
+        session = new SessionManager(getApplicationContext());
+
+
+
+       if (!session.isLoggedIn()) {
+            logoutUser();
+        }
+
+        // Fetching user details from sqlite
+        HashMap<String, String> user = db.getUserDetails();
+
+        String id = user.get("uid");
+        String name = user.get("name");
+        String surname = user.get("second_name");
 
         //вызов тулбара
         initToolbar();
@@ -42,6 +74,23 @@ public class MainActivity extends AppCompatActivity {
         initTabs();
         //вызов панели вкладок
         initTabLayout();
+
+ /*       Text1 = (TextView) findViewById(R.id.user_id);
+        Text2 = (TextView) findViewById(R.id.user_name);
+        Text3 = (TextView) findViewById(R.id.user_surname);
+       // Text1.setText(id);
+       // Text2.setText("jo");
+       Text3.setText("pa");*/
+
+        toolbar.setTitle(name);
+
+        FAB = (FloatingActionButton) findViewById(R.id.fab_schedule);
+        FAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logoutUser();
+            }
+        });
     }
 
     //инициализация тулбара
@@ -49,14 +98,15 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         //Выставление заголовка тулбара
         toolbar.setTitle("DonGTU_mobile BETA.Главная");
-//        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                return false;
-//            }
-//        });
+/*        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return false;
+            }
+        });*/
 
         toolbar.inflateMenu(R.menu.menu);
+
     }
 
     //подключение выпадающего меню
@@ -81,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 drawerLayout.closeDrawers();
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.schedule:
                         showSecondTab();
                 }
@@ -101,9 +151,23 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         TabsPagerFragmentAdapter adapter = new TabsPagerFragmentAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+
     }
 
     private void showSecondTab(){
         viewPager.setCurrentItem(Constants.TAB_TWO);
     }
+
+   private void logoutUser() {
+        session.setLogin(false);
+
+        db.deleteUsers();
+
+        // Launching the login activity
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
 }

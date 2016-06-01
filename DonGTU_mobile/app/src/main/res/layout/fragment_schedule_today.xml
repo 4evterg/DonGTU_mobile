@@ -29,11 +29,28 @@
                 android:layout_margin="@dimen/card_margin"
                 card_view:cardCornerRadius="2dp">
 
-                <TextView
-                    android:id="@+id/info_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Today 1!"/>
+               <LinearLayout
+                   android:orientation="vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:gravity="center">
+                   <TextView
+                       android:id="@+id/user_id"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Today 1!" />
+                   <TextView
+                       android:id="@+id/user_name"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Today 12!"/>
+                   <TextView
+                       android:id="@+id/user_surname"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Today 13!"/>
+               </LinearLayout>
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView

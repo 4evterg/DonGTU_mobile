@@ -29,6 +29,8 @@ public class TabsPagerFragmentAdapter extends FragmentPagerAdapter{
         return tabs[position];
     }
 
+
+
     @Override
     public Fragment getItem(int position) {
         //Переключение вкладок

@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.chetverg.dongtu_mobile.R;
 
@@ -16,6 +17,7 @@ public class TodayFragment extends Fragment{
     private static int LAYOUT = R.layout.fragment_schedule_today;
 
     private View view;
+    private TextView Test1;
 
     public static TodayFragment getInstance(){
         Bundle args = new Bundle();
@@ -29,7 +31,6 @@ public class TodayFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
-
         return view;
     }
 }
