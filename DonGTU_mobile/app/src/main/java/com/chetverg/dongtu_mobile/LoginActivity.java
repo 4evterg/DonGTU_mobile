@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button mLoginButton; //объявление кнопки входа
     private EditText mInputLogin; //объявление поля логина
     private EditText mIputPassword; //объявление поля пароля
+    private Button mBackDoor;
 
     //инициализация формы входа
     @Override
@@ -74,6 +75,15 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
+        //Бэкдор :)
+        mBackDoor = (Button)findViewById(R.id.login_button_offline);
+        mBackDoor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i  = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(i); //Не забыть изменить на просто стартактивити
+            }
+        });
 
         //
         mLoginButton = (Button)findViewById(R.id.login_button);
@@ -98,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                 //startActivityForResult(i, 0); //Не забыть изменить на просто стартактивити
             }
         });
+
 
     }
 

@@ -15,12 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
 import com.chetverg.dongtu_mobile.adapter.TabsPagerFragmentAdapter;
-
-import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,15 +26,10 @@ public class MainActivity extends AppCompatActivity {
     //объявление вкладок
     private ViewPager viewPager;
     private DrawerLayout drawerLayout;
-
-
     //
     private SQLiteHandler db;
     private SessionManager session;
 
-   /* private TextView Text1;
-    private TextView Text2;
-    private TextView Text3;*/
     private FloatingActionButton FAB;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,18 +43,9 @@ public class MainActivity extends AppCompatActivity {
         // session manager
         session = new SessionManager(getApplicationContext());
 
-
-
-       if (!session.isLoggedIn()) {
-            logoutUser();
-        }
-
-        // Fetching user details from sqlite
-        HashMap<String, String> user = db.getUserDetails();
-
-        String id = user.get("uid");
-        String name = user.get("name");
-        String surname = user.get("second_name");
+//       if (!session.isLoggedIn()) {
+//            logoutUser();
+//        }
 
         //вызов тулбара
         initToolbar();
@@ -74,15 +55,6 @@ public class MainActivity extends AppCompatActivity {
         initTabs();
         //вызов панели вкладок
         initTabLayout();
-
- /*       Text1 = (TextView) findViewById(R.id.user_id);
-        Text2 = (TextView) findViewById(R.id.user_name);
-        Text3 = (TextView) findViewById(R.id.user_surname);
-       // Text1.setText(id);
-       // Text2.setText("jo");
-       Text3.setText("pa");*/
-
-        toolbar.setTitle(name);
 
         FAB = (FloatingActionButton) findViewById(R.id.fab_schedule);
         FAB.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
         toolbar.inflateMenu(R.menu.menu);
-
     }
 
     //подключение выпадающего меню
@@ -158,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setCurrentItem(Constants.TAB_TWO);
     }
 
-   private void logoutUser() {
+    private void logoutUser() {
         session.setLogin(false);
 
         db.deleteUsers();
