@@ -43,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
         // session manager
         session = new SessionManager(getApplicationContext());
 
-//       if (!session.isLoggedIn()) {
-//            logoutUser();
-//        }
+        //Вернуть пользователя на форму входа, если не залогини. Временно отключено
+/*       if (!session.isLoggedIn()) {
+            logoutUser();
+        }*/
 
         //вызов тулбара
         initToolbar();

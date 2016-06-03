@@ -15,22 +15,22 @@ import java.util.HashMap;
 public class SQLiteHandler extends SQLiteOpenHelper {
 
     private static final String TAG = SQLiteHandler.class.getSimpleName();
-    // All Static variables
-    // Database Version
-    private static final int DATABASE_VERSION = 1;
 
-    // Database Name
-    private static final String DATABASE_NAME = "android_api";
+    // Версия БД для обновления структуры БД необходимо изменить значение
+    private static final int DATABASE_VERSION = Constants.DATABASE_VERSION;
 
-    // Login table name
-    private static final String TABLE_USER = "user";
+    //Название БД
+    private static final String DATABASE_NAME = Constants.DATABASE_NAME;
 
-    // Login Table Columns names
-    private static final String KEY_ID = "id";
-    private static final String KEY_NAME = "name";
-    private static final String KEY_SURNAME = "second_name";
-    private static final String KEY_UID = "uid";
-    //private static final String KEY_PRIV_LVL = "privilegue_level";
+    //название таблицы
+    private static final String TABLE_USER = Constants.TABLE_USER;
+
+    //имена столбцов БД
+    private static final String KEY_ID = Constants.KEY_ID;
+    private static final String KEY_UID = Constants.KEY_UID;
+    private static final String KEY_NAME = Constants.KEY_NAME;
+    private static final String KEY_SURNAME = Constants.KEY_SURNAME;
+    private static final String KEY_THIRDNAME =Constants.KEY_THIRDNAME;
 
     public SQLiteHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -40,33 +40,41 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_SURNAME + " TEXT," + KEY_UID + " TEXT" + ")";
+                + KEY_ID + " INTEGER PRIMARY KEY,"  + KEY_UID + " TEXT," + KEY_NAME + " TEXT,"
+                + KEY_SURNAME + " TEXT," + KEY_THIRDNAME + " TEXT" + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
 
         Log.d(TAG, "Database tables created");
     }
 
-    // Upgrading database
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Drop older table if existed
+    //на случай изменения версии БД
+    public void freshDB(SQLiteDatabase db){
+        //сброс существующеей таблицы
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
-
-        // Create tables again
+        //создание новой
         onCreate(db);
     }
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        freshDB(db);
+    }
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        freshDB(db);
+    }
+
 
     /**
      * Storing user details in database
      * */
-    public void addUser(String name, String surname, String uid) {
+    public void addUser(String uid, String name, String surname, String third_name) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(KEY_UID, uid); // uid
         values.put(KEY_NAME, name); // Name
         values.put(KEY_SURNAME, surname); // Second name
-       // values.put(KEY_PRIV_LVL, prv_lvl); // privilegue_level
+        values.put(KEY_THIRDNAME, third_name); // Third name
 
         // Inserting Row
         long id = db.insert(TABLE_USER, null, values);
@@ -87,10 +95,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         // Move to first row
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
-            user.put("name", cursor.getString(1));
-            user.put("second_name", cursor.getString(2));
-            user.put("uid", cursor.getString(3));
-           // user.put("privilegue_level", String.valueOf(cursor.getInt(3)));
+            user.put("uid", cursor.getString(1));
+            user.put("name", cursor.getString(2));
+            user.put("second_name", cursor.getString(3));
+            user.put("third_name", cursor.getString(4));
+            //user.put("privilegue_level", String.valueOf(cursor.getInt(3)));
         }
         cursor.close();
         db.close();

@@ -21,8 +21,6 @@ public class TodayFragment extends Fragment{
     private static int LAYOUT = R.layout.fragment_schedule_today;
 
     private View view;
-    private String text;
-    private TextView Test1;
     private SQLiteHandler db;
 
     public static TodayFragment getInstance(){
@@ -41,17 +39,20 @@ public class TodayFragment extends Fragment{
         //установка текста из учетки юзера
         db = new SQLiteHandler(getActivity().getApplicationContext());
         HashMap<String, String> user = db.getUserDetails();
+        String uid = user.get("uid");
         String name = user.get("name");
         String surname = user.get("second_name");
-        String uid = user.get("uid");
+        String third_name = user.get("third_name");
 
+        View tv_uid = view.findViewById(R.id.user_id);
         View tv_name = view.findViewById(R.id.user_name);
         View tv_surname = view.findViewById(R.id.user_surname);
-        View tv_uid = view.findViewById(R.id.user_id);
+        View tv_thirdname = view.findViewById(R.id.user_thirdname);
 
         ((TextView)tv_uid).setText(uid);
         ((TextView)tv_name).setText(name);
         ((TextView)tv_surname).setText(surname);
+        ((TextView)tv_thirdname).setText(third_name);
 
         return view;
     }

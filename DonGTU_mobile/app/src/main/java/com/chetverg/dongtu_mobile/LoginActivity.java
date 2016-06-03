@@ -18,13 +18,6 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-
-/*import com.chetverg.dongtu_mobile.Constants;
-import com.chetverg.dongtu_mobile.AppController;
-import com.chetverg.dongtu_mobile.SQLiteHandler;
-import com.chetverg.dongtu_mobile.SessionManager;*/
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,9 +55,12 @@ public class LoginActivity extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
+
+
         // SQLite database handler
         db = new SQLiteHandler(getApplicationContext());
         // Session manager
+
         session = new SessionManager(getApplicationContext());
 
         // Check if user is already logged in or not
@@ -100,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
-                            "Please enter the credentials!", Toast.LENGTH_LONG)
+                            "Пожалуйста, заполните все поля!", Toast.LENGTH_LONG)
                             .show();
                 }
 
@@ -138,14 +134,15 @@ public class LoginActivity extends AppCompatActivity {
                         session.setLogin(true);
 
                         // Now store the user in SQLite
-                        String uid = jObj.getString("uid");
                         JSONObject user = jObj.getJSONObject("user");
+                        String uid = user.getString("uid");
                         String name = user.getString("name");
                         String second_name = user.getString("second_name");
+                        String third_name = user.getString("third_name");
 
 
                         // Inserting row in users table
-                        db.addUser(name, second_name, uid);
+                        db.addUser(uid, name, second_name, third_name);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,
