@@ -3,6 +3,47 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="192dp"
-    android:background="@color/colorPrimaryDark">
+    android:background="@mipmap/dongtu_img"
+    android:paddingLeft="@dimen/nav_menu_padding"
+    android:paddingRight="@dimen/nav_menu_padding"
+    android:paddingTop="@dimen/nav_menu_padding">
 
+    <ImageView
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="top"
+        android:background="@android:drawable/ic_menu_camera"
+        android:scaleType="centerCrop"
+
+        />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nav_menu_text_items_height"
+            android:layout_gravity="bottom">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium "
+                android:id="@+id/nav_header_username"
+                android:textColor="@color/colorWhite"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/nav_header_usersurname"
+                android:textColor="@color/colorWhite"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

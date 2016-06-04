@@ -15,7 +15,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
 import com.chetverg.dongtu_mobile.adapter.TabsPagerFragmentAdapter;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,14 +30,16 @@ public class MainActivity extends AppCompatActivity {
     //объявление вкладок
     private ViewPager viewPager;
     private DrawerLayout drawerLayout;
-    //
+
+
     private SQLiteHandler db;
     private SessionManager session;
 
-    private FloatingActionButton FAB;
-    //объявление кнопки меню - выход
-    private MenuItem logout;
+    //имя фамилия пользователя в боковой панели
+    private TextView user_name;
+    private TextView user_surname;
 
+    private FloatingActionButton FAB;
 
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppDefault);
@@ -109,13 +115,20 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
-
-        //инициализация кнопки меню - выход
-        logout = (MenuItem)findViewById(R.id.navigation_menu_logout_btn);
-
-
         //переход на вкладу при нажатии на пункт бокового меню
         NavigationView NView = (NavigationView) findViewById(R.id.navigation);
+
+
+        //выставление имени и фамилии пользователя в шапке боковой панели
+        db = new SQLiteHandler(getApplicationContext());
+        HashMap<String, String> user = db.getUserDetails();
+
+        View header = NView.getHeaderView(0);
+        user_name = (TextView)header.findViewById(R.id.nav_header_username);
+        user_surname = (TextView)header.findViewById(R.id.nav_header_usersurname);
+        user_name.setText(user.get("name"));
+        user_surname.setText(" " + user.get("second_name"));
+
 
         assert NView != null;
         NView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
