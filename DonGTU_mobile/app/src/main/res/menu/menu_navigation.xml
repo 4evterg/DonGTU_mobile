@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <group android:id="@+id/navigation_menu_main"
+        android:checkableBehavior="single">
     <item
         android:id="@+id/schedule"
         android:title="@string/menu_item_schedule"
@@ -9,7 +11,19 @@
 
     <item
         android:title="@string/menu_item_events"
-        android:orderInCategory="1"
+        android:orderInCategory="2"
         android:icon="@mipmap/ic_format_list_bulleted_type_white_24dp" />
+    </group>
+
+
+    <group android:id="@+id/navigation_menu_logout"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_menu_logout_btn"
+            android:title="@string/logout_button"
+            android:orderInCategory="3"
+            android:icon="@android:drawable/ic_lock_power_off" />
+    </group>
+
 
 </menu>

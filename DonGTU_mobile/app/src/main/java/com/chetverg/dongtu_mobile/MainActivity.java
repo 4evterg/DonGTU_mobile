@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private SessionManager session;
 
     private FloatingActionButton FAB;
+    //объявление кнопки меню - выход
+    private MenuItem logout;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppDefault);
@@ -57,26 +60,34 @@ public class MainActivity extends AppCompatActivity {
         //вызов панели вкладок
         initTabLayout();
 
+        //экшн-баттон
         FAB = (FloatingActionButton) findViewById(R.id.fab_schedule);
-        FAB.setOnClickListener(new View.OnClickListener() {
+/*        FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logoutUser();
             }
-        });
+        });*/
     }
+
 
     //инициализация тулбара
     private void initToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         //Выставление заголовка тулбара
-        toolbar.setTitle("DonGTU_mobile BETA.Главная");
-/*        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
+       toolbar.setTitle("DonGTU_mobile BETA.Главная");
+
+       toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                switch(item.getItemId()) {
+                    case R.id.first_item:
+                       // logoutUser();
+                       // break;
+                }
                 return false;
             }
-        });*/
+        });
 
         toolbar.inflateMenu(R.menu.menu);
     }
@@ -89,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    //инициализация бокового меню
     private void initNavigationView() {
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
@@ -97,15 +109,24 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
+
+        //инициализация кнопки меню - выход
+        logout = (MenuItem)findViewById(R.id.navigation_menu_logout_btn);
+
+
         //переход на вкладу при нажатии на пункт бокового меню
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        NavigationView NView = (NavigationView) findViewById(R.id.navigation);
+
+        assert NView != null;
+        NView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 drawerLayout.closeDrawers();
                 switch (item.getItemId()) {
-                    case R.id.schedule:
-                        showSecondTab();
+                    //выход по кнопке в боковом меню
+                    case R.id.navigation_menu_logout_btn:
+                        logoutUser();
+                        break;
                 }
                 return true;
             }
@@ -126,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //это просто тествовая фун-я - необходимо удалить!!!
     private void showSecondTab(){
         viewPager.setCurrentItem(Constants.TAB_TWO);
     }

@@ -99,9 +99,6 @@ public class LoginActivity extends AppCompatActivity {
                             "Пожалуйста, заполните все поля!", Toast.LENGTH_LONG)
                             .show();
                 }
-
-                //Intent i  = new Intent(LoginActivity.this, MainActivity.class);
-                //startActivityForResult(i, 0); //Не забыть изменить на просто стартактивити
             }
         });
 

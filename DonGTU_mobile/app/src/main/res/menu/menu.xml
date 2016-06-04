@@ -8,9 +8,10 @@
         <!--android:icon="@mipmap/ic_dots_vertical_white_24dp"-->
         <!--app:showAsAction="ifRoom"/>-->
 
+    <!-- надо переиминовать айдишники итемов-->
     <item
         android:id="@+id/first_item"
-        android:title="first_item"
+        android:title="@string/logout_button"
         android:orderInCategory="1"
 
         app:showAsAction="never"/>
