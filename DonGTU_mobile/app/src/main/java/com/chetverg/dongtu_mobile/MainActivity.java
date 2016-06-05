@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         initToolbar();
         //вызов меню
         initNavigationView();
+       // SlideMenu sl = new SlideMenu(getApplicationContext());
+       // sl.runMenu();
+
         //вызов вкладок
         initTabs();
         //вызов панели вкладок
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     private void initToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         //Выставление заголовка тулбара
-       toolbar.setTitle("DonGTU_mobile BETA.Главная");
+       toolbar.setTitle("Расписание");
 
        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
             @Override
@@ -141,9 +144,9 @@ public class MainActivity extends AppCompatActivity {
                         logoutUser();
                         break;
                     case R.id.navigation_menu_profile_btn:
-                        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                         startActivity(intent);
-                        finish();
+                       // finish();
                         break;
                 }
                 return true;

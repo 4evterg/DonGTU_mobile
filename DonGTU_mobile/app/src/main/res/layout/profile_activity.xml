@@ -66,6 +66,7 @@
             </LinearLayout>
         </LinearLayout>
 
+        <!-- экшн-кнопочка -->
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_profile"
             android:layout_width="@dimen/fab_size"
@@ -78,5 +79,13 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
+    <!-- Боковое меню/панель-->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/menu_navigation"
+        app:headerLayout="@layout/navigation_header" />
 
 </android.support.v4.widget.DrawerLayout>
