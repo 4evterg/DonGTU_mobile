@@ -140,6 +140,11 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navigation_menu_logout_btn:
                         logoutUser();
                         break;
+                    case R.id.navigation_menu_profile_btn:
+                        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                        startActivity(intent);
+                        finish();
+                        break;
                 }
                 return true;
             }

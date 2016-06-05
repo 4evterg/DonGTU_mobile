@@ -3,16 +3,21 @@
 
     <group android:id="@+id/navigation_menu_main"
         android:checkableBehavior="single">
-    <item
-        android:id="@+id/schedule"
-        android:title="@string/menu_item_schedule"
-        android:orderInCategory="1"
-        android:icon="@mipmap/ic_format_list_bulleted_type_white_24dp" />
+        <item
+            android:id="@+id/schedule"
+            android:title="@string/menu_item_schedule"
+            android:orderInCategory="1"
+            android:icon="@mipmap/ic_format_list_bulleted_type_white_24dp" />
+        <item
+            android:title="@string/menu_item_events"
+            android:orderInCategory="2"
+            android:icon="@mipmap/ic_format_list_bulleted_type_white_24dp" />
+        <item
+            android:id="@+id/navigation_menu_profile_btn"
+            android:title="@string/profile"
+            android:orderInCategory="3"
+            android:icon="@android:drawable/ic_menu_compass" />
 
-    <item
-        android:title="@string/menu_item_events"
-        android:orderInCategory="2"
-        android:icon="@mipmap/ic_format_list_bulleted_type_white_24dp" />
     </group>
 
 
@@ -21,7 +26,7 @@
         <item
             android:id="@+id/navigation_menu_logout_btn"
             android:title="@string/logout_button"
-            android:orderInCategory="3"
+            android:orderInCategory="4"
             android:icon="@android:drawable/ic_lock_power_off" />
     </group>
 

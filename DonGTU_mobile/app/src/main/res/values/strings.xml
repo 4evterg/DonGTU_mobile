@@ -1,14 +1,24 @@
 <resources>
     <string name="app_name">DonGTU_mobile BETA</string>
     <string name="login_app_name">DonGTU_mobile \n BETA</string>
+
+
     <string name="main_activity_menu">Меню</string>
     <string name="menu_item_schedule">Расписание</string>
     <string name="menu_item_events">События</string>
+    <string name="profile">Профиль</string>
+
+
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
     <string name="login_remember_me">Запомнить меня</string>
     <string name="login_button">Войти</string>
     <string name="logout_button">Выйти</string>
+
+
     <string name="open">Открыть</string>
     <string name="close">Закрыть</string>
-    <string name="login">Логин</string>
-    <string name="password">Пароль</string>
+
+
+
 </resources>

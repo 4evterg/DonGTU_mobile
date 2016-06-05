@@ -4,19 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="192dp"
     android:background="@mipmap/dongtu_img"
-    android:paddingLeft="@dimen/nav_menu_padding"
-    android:paddingRight="@dimen/nav_menu_padding"
-    android:paddingTop="@dimen/nav_menu_padding">
+    android:paddingLeft="@dimen/small_padding"
+    android:paddingRight="@dimen/small_padding"
+    android:paddingTop="@dimen/small_padding">
 
     <ImageView
         android:layout_width="112dp"
         android:layout_height="112dp"
-        android:id="@+id/imageView"
+        android:id="@+id/nav_menu_photo"
         android:layout_gravity="top"
         android:background="@android:drawable/ic_menu_camera"
-        android:scaleType="centerCrop"
+        android:scaleType="centerCrop" />
 
-        />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

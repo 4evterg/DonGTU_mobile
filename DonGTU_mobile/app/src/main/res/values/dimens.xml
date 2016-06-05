@@ -6,7 +6,7 @@
     <dimen name="activity_horizontal_margin">0dp</dimen>
     <dimen name="text_margin">5dp</dimen>
 
-    <dimen name="nav_menu_padding">16dp</dimen>
+    <dimen name="small_padding">16dp</dimen>
     <dimen name="nav_menu_text_items_margin">72dp</dimen>
     <dimen name="nav_menu_text_items_height">48dp</dimen>
     <dimen name="nav_menu_text_content_space">8dp</dimen>
@@ -15,5 +15,6 @@
     <dimen name="card_margin">7dp</dimen>
     <!-- Отступы для экшн-кнопочки -->
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_size">64dp</dimen>
 
 </resources>
