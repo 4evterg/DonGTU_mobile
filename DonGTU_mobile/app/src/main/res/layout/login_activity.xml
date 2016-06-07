@@ -28,6 +28,17 @@
                 android:textColor="@color/colorPrimary"/>
 
             <EditText
+                android:id="@+id/server_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Адрес Сервера"
+                android:ems="10"
+                android:layout_gravity="start"
+                android:text="http://192.168.0.103/do/api/login.php"
+                />
+
+            <EditText
                 android:id="@+id/login_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -139,13 +139,18 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 drawerLayout.closeDrawers();
                 switch (item.getItemId()) {
+                    case R.id.schedule:
+                        Intent intent_schedule = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent_schedule);
+                        finish();
+                        break;
                     //выход по кнопке в боковом меню
                     case R.id.navigation_menu_logout_btn:
                         logoutUser();
                         break;
                     case R.id.navigation_menu_profile_btn:
-                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                        startActivity(intent);
+                        Intent intent_profile = new Intent(getApplicationContext(), ProfileActivity.class);
+                        startActivity(intent_profile);
                        // finish();
                         break;
                 }

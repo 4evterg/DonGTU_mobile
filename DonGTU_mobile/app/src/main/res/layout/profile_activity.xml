@@ -9,73 +9,160 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:background="@mipmap/profile_img"
-            android:scaleType="centerCrop">
+            android:layout_height="match_parent"
+            >
 
-            <android.support.design.widget.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/profile_toolbar">
-
-                <android.support.v7.widget.Toolbar
-                    xmlns:andriod="http://schemas.android.com/apk/res/android"
-                    andriod:id="@+id/toolbar"
-                    andriod:layout_width="match_parent"
-                    andriod:layout_height="?attr/actionBarSize"
-                    andriod:background="@color/profile_toolbar"
-                    app:titleTextColor="@color/colorWhite" />
-
-            </android.support.design.widget.AppBarLayout>
-
+            <!-- Шапка -->
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-
-                android:padding="@dimen/small_padding"
+                android:layout_height="240dp"
+                android:background="@mipmap/profile_img"
+                android:scaleType="centerCrop"
                 >
+
+                <android.support.design.widget.AppBarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/profile_toolbar">
+
+                    <android.support.v7.widget.Toolbar
+                        xmlns:andriod="http://schemas.android.com/apk/res/android"
+                        andriod:id="@+id/toolbar"
+                        andriod:layout_width="match_parent"
+                        andriod:layout_height="?attr/actionBarSize"
+                        andriod:background="@color/profile_toolbar"
+                        app:titleTextColor="@color/colorWhite" />
+
+                </android.support.design.widget.AppBarLayout>
+
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:padding="@dimen/small_padding"
+                    >
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Medium Text"
-                        android:id="@+id/profile_name"
-                        android:textColor="@color/colorWhite"/>
+                        android:layout_gravity="bottom"
+                        android:gravity="center">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Medium Text"
-                        android:id="@+id/profile_surname"
-                        android:textColor="@color/colorWhite" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Medium Text"
+                            android:id="@+id/profile_title_name"
+                            android:textColor="@color/colorWhite"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Medium Text"
+                            android:id="@+id/profile_title_surname"
+                            android:textColor="@color/colorWhite" />
+                    </LinearLayout>
+
                 </LinearLayout>
-
             </LinearLayout>
+
+            <!-- Блок информации-->
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="@dimen/small_padding"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/list_item_height"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Medium Text"
+                    android:id="@+id/profile_fio"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/list_item_height"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/profile_city"
+                    android:text="Medium Text" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/list_item_height"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/profile_country"
+                    android:text="Medium Text" />
+                <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Medium Text" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Medium Text" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Medium Text" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Medium Text" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Medium Text" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Medium Text" />
+
+                <ListView
+                    android:id="@+id/profile_list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:drawSelectorOnTop="false"
+                    />-->
+            </LinearLayout>
+        </ScrollView>
         </LinearLayout>
 
         <!-- экшн-кнопочка -->
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_profile"
-            android:layout_width="@dimen/fab_size"
-            android:layout_height="@dimen/fab_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="top|end"
             android:layout_marginRight="@dimen/small_padding"
             android:layout_marginTop="208dp"
             android:src="@mipmap/ic_plus_white_24dp"
+            app:borderWidth="0dp"
             />
+
+
+
 
     </android.support.design.widget.CoordinatorLayout>
 
@@ -87,5 +174,7 @@
         android:layout_gravity="start"
         app:menu="@menu/menu_navigation"
         app:headerLayout="@layout/navigation_header" />
+
+
 
 </android.support.v4.widget.DrawerLayout>

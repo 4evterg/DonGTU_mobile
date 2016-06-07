@@ -39,6 +39,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mInputLogin; //объявление поля логина
     private EditText mIputPassword; //объявление поля пароля
     private Button mBackDoor;
+    private EditText mAddress;
+    private String Adrdess;
+
 
     //инициализация формы входа
     @Override
@@ -46,12 +49,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //выставление стиля формы по-умолчанию
         setTheme(R.style.AppLogin);
-        //Пподключение формы
+        //пподключение формы
         setContentView(LAYOUT);
 
-        // Инициализация полей логина и пароля, а так же прогресс диалога
+        //инициализация полей логина и пароля, а так же прогресс диалога
         mInputLogin = (EditText) findViewById(R.id.login_name);
         mIputPassword = (EditText) findViewById(R.id.login_password);
+
+        //временная мера
+        mAddress = (EditText) findViewById(R.id.server_address);
+
+
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
@@ -89,6 +97,11 @@ public class LoginActivity extends AppCompatActivity {
 
                 String login = mInputLogin.getText().toString().trim();
                 String password = mIputPassword.getText().toString().trim();
+                Adrdess = mAddress.getText().toString();
+
+                //Шифруем пароль прежде чем отсылать запрос
+               // password = md5.crypt(password);
+               // password = md5.crypt(password);
 
                 if (!login.isEmpty() && !password.isEmpty()) {
                     // login user
@@ -112,8 +125,13 @@ public class LoginActivity extends AppCompatActivity {
         pDialog.setMessage("Выполняется вход ...");
         showDialog();
 
+        if (Adrdess=="" || Adrdess == null)
+        {
+            Adrdess = Constants.URL_LOGIN;
+        }
+
         StringRequest strReq = new StringRequest(Method.POST,
-                Constants.URL_LOGIN, new Response.Listener<String>() {
+                Adrdess, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -136,10 +154,13 @@ public class LoginActivity extends AppCompatActivity {
                         String name = user.getString("name");
                         String second_name = user.getString("second_name");
                         String third_name = user.getString("third_name");
+                        String city = user.getString("city");
+                        String country = user.getString("country");
+
 
 
                         // Inserting row in users table
-                        db.addUser(uid, name, second_name, third_name);
+                        db.addUser(uid, name, second_name, third_name, city,  country);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,

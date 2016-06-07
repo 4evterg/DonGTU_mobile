@@ -10,20 +10,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.HashMap;
+import java.util.Stack;
 
 /**
  * Created by chetverg on 05.06.16.
  */
 public class ProfileActivity extends AppCompatActivity {
 
-    private String test;
+/*    private String test;
 
     public ProfileActivity(String test){
         this.test = test;
-    }
+    }*/
 
 
     private ViewPager viewPager;
@@ -33,12 +35,20 @@ public class ProfileActivity extends AppCompatActivity {
     //объявление тулбара
     private Toolbar toolbar;
 
+    //имя фамилия пользователя в заголовке
+    private TextView user_title_name;
+    private TextView user_title_surname;
+
     //имя фамилия пользователя
-    private TextView user_name;
-    private TextView user_surname;
+    private TextView user_fio;
+
+    private TextView user_city;
+    private TextView user_country;
 
     private SQLiteHandler db;
     private SessionManager session;
+
+    private ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +66,24 @@ public class ProfileActivity extends AppCompatActivity {
 //        user_name = (TextView)toolbar.findViewById(R.id.profile_name);
 //        user_surname = (TextView)toolbar.findViewById(R.id.profile_surname);
 
-        user_name = (TextView)findViewById(R.id.profile_name);
-        user_surname = (TextView)findViewById(R.id.profile_surname);
+        user_fio = (TextView)findViewById(R.id.profile_fio);
+        user_title_name = (TextView)findViewById(R.id.profile_title_name);
+        user_title_surname = (TextView)findViewById(R.id.profile_title_surname);
+        user_city = (TextView)findViewById(R.id.profile_city);
+        user_country = (TextView)findViewById(R.id.profile_country);
 
-        user_name.setText(test);
-        user_surname.setText(" " + user.get("second_name"));
+
+        user_title_name.setText(user.get("name"));
+        user_title_surname.setText(" " + user.get("second_name"));
+
+
+        user_fio.setText(user.get("name") + " " + user.get("third_name") + " " + user.get("second_name"));
+
+        user_city.setText(user.get("city"));
+        user_country.setText(user.get("country"));
+
+//        lv = (ListView) findViewById(R.id.profile_list);
+
 
         //вызов тулбара
         initToolbar();
@@ -107,10 +130,10 @@ public class ProfileActivity extends AppCompatActivity {
         HashMap<String, String> user = db.getUserDetails();
 
         View header = NView.getHeaderView(0);
-        user_name = (TextView)header.findViewById(R.id.nav_header_username);
-        user_surname = (TextView)header.findViewById(R.id.nav_header_usersurname);
-        user_name.setText(user.get("name"));
-        user_surname.setText(" " + user.get("second_name"));
+        user_title_name = (TextView)header.findViewById(R.id.nav_header_username);
+        user_title_surname = (TextView)header.findViewById(R.id.nav_header_usersurname);
+        user_title_name.setText(user.get("name"));
+        user_title_surname.setText(" " + user.get("second_name"));
 
 
         assert NView != null;
@@ -120,6 +143,11 @@ public class ProfileActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 switch (item.getItemId()) {
                     //выход по кнопке в боковом меню
+                    case R.id.schedule:
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+
+                        break;
                     case R.id.navigation_menu_logout_btn:
                         logoutUser();
                         break;
