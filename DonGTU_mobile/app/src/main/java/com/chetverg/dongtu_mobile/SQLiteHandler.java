@@ -17,10 +17,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String TAG = SQLiteHandler.class.getSimpleName();
 
     // Версия БД для обновления структуры БД необходимо изменить значение
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     //Название БД
-    private static final String DATABASE_NAME = "DonGTU_DO";
+    private static final String DATABASE_NAME = "DonGTU_DB";
 
     //название таблицы
     private static final String TABLE_USER = "user_table";
@@ -33,6 +33,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_THIRDNAME = "third_name";
     private static final String KEY_CITY = "city";
     private static final String KEY_COUNTRY = "country";
+    private static final String KEY_CATHEDRA = "cathedra";
+    private static final String KEY_GROUP = "user_group";
+    private static final String KEY_POST = "post";
+
 
     public SQLiteHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -41,9 +45,19 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
-                + KEY_ID + " INTEGER PRIMARY KEY,"  + KEY_UID + " TEXT," + KEY_NAME + " TEXT,"
-                + KEY_SURNAME + " TEXT," + KEY_THIRDNAME + " TEXT," + KEY_CITY + " TEXT," + KEY_COUNTRY + " TEXT" + ")";
+        String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER +
+                "("
+                + KEY_ID + " INTEGER PRIMARY KEY,"
+                + KEY_UID + " TEXT,"
+                + KEY_NAME + " TEXT,"
+                + KEY_SURNAME + " TEXT,"
+                + KEY_THIRDNAME + " TEXT,"
+                + KEY_CITY + " TEXT,"
+                + KEY_COUNTRY + " TEXT,"
+                + KEY_CATHEDRA + " TEXT,"
+                + KEY_GROUP + " TEXT,"
+                + KEY_POST + " TEXT"
+                + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
 
         Log.d(TAG, "Database tables created");
@@ -69,7 +83,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String uid, String name, String surname, String third_name, String city, String country) {
+    public void addUser(String uid, String name, String surname, String third_name, String city, String country, String cathedra, String group, String post) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -77,8 +91,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put(KEY_NAME, name); // Name
         values.put(KEY_SURNAME, surname); // Second name
         values.put(KEY_THIRDNAME, third_name); // Third name
-        values.put(KEY_CITY, city); // Third name
-        values.put(KEY_COUNTRY, country); // Third name
+        values.put(KEY_CITY, city); //
+        values.put(KEY_COUNTRY, country); //
+        values.put(KEY_CATHEDRA, cathedra); //
+        values.put(KEY_GROUP, group); //
+        values.put(KEY_POST, post); //
+
 
         // Inserting Row
         long id = db.insert(TABLE_USER, null, values);
@@ -99,12 +117,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         // Move to first row
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
-            user.put("uid", cursor.getString(1));
-            user.put("name", cursor.getString(2));
-            user.put("second_name", cursor.getString(3));
-            user.put("third_name", cursor.getString(4));
-            user.put("city", cursor.getString(5));
-            user.put("country", cursor.getString(6));
+            user.put(KEY_UID, cursor.getString(1));
+            user.put(KEY_NAME, cursor.getString(2));
+            user.put(KEY_SURNAME, cursor.getString(3));
+            user.put(KEY_THIRDNAME, cursor.getString(4));
+            user.put(KEY_CITY, cursor.getString(5));
+            user.put(KEY_COUNTRY, cursor.getString(6));
+            user.put(KEY_CATHEDRA, cursor.getString(7));
+            user.put(KEY_GROUP, cursor.getString(8));
+            user.put(KEY_POST, cursor.getString(9));
             //user.put("privilegue_level", String.valueOf(cursor.getInt(3)));
         }
         cursor.close();

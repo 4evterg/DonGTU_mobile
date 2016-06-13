@@ -22,8 +22,8 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="240dp"
-                android:background="@mipmap/profile_img"
+                android:layout_height="200dp"
+                android:background="@mipmap/profile"
                 android:scaleType="centerCrop"
                 >
 
@@ -88,14 +88,156 @@
                 android:padding="@dimen/small_padding"
                 >
 
-                <TextView
-                    android:layout_width="wrap_content"
+                //фио
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
                     android:layout_height="@dimen/list_item_height"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Medium Text"
-                    android:id="@+id/profile_fio"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"/>
+                    android:gravity="center_vertical"
+                    >
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/fio"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Medium Text"
+                            android:id="@+id/profile_fio"
+                        />
+                        </LinearLayout>
+                </LinearLayout>
+
+                //город
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:gravity="center_vertical"
+                    >
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/city"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Medium Text"
+                            android:id="@+id/profile_city"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+                //кафеда
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:gravity="center_vertical"
+                    >
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/cathedra"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Medium Text"
+                            android:id="@+id/profile_cathedra"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+                //группа
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:gravity="center_vertical"
+                    >
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/group"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Medium Text"
+                            android:id="@+id/profile_group"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+                //кафеда
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:gravity="center_vertical"
+                    >
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/post"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Medium Text"
+                            android:id="@+id/profile_post"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+<!--
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/list_item_height"
@@ -107,7 +249,8 @@
                     android:layout_height="@dimen/list_item_height"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/profile_country"
-                    android:text="Medium Text" />
+                    android:text="Medium Text" />-->
+
                 <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -156,7 +299,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|end"
             android:layout_marginRight="@dimen/small_padding"
-            android:layout_marginTop="208dp"
+            android:layout_marginTop="168dp"
             android:src="@mipmap/ic_plus_white_24dp"
             app:borderWidth="0dp"
             />

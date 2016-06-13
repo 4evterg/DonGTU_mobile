@@ -39,11 +39,13 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView user_title_name;
     private TextView user_title_surname;
 
-    //имя фамилия пользователя
+    //данные пользователя выводимые в основном блоке
     private TextView user_fio;
-
     private TextView user_city;
-    private TextView user_country;
+    private TextView user_cathedra;
+    private TextView user_group;
+    private TextView user_post;
+
 
     private SQLiteHandler db;
     private SessionManager session;
@@ -70,7 +72,9 @@ public class ProfileActivity extends AppCompatActivity {
         user_title_name = (TextView)findViewById(R.id.profile_title_name);
         user_title_surname = (TextView)findViewById(R.id.profile_title_surname);
         user_city = (TextView)findViewById(R.id.profile_city);
-        user_country = (TextView)findViewById(R.id.profile_country);
+        user_cathedra = (TextView)findViewById(R.id.profile_cathedra);
+        user_group = (TextView)findViewById(R.id.profile_group);
+        user_post = (TextView)findViewById(R.id.profile_post);
 
 
         user_title_name.setText(user.get("name"));
@@ -78,11 +82,10 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         user_fio.setText(user.get("name") + " " + user.get("third_name") + " " + user.get("second_name"));
-
-        user_city.setText(user.get("city"));
-        user_country.setText(user.get("country"));
-
-//        lv = (ListView) findViewById(R.id.profile_list);
+        user_city.setText(user.get("country") + ", " + user.get("city"));
+        user_cathedra.setText(user.get("cathedra"));
+        user_group.setText(user.get("user_group"));
+        user_post.setText(user.get("post"));
 
 
         //вызов тулбара

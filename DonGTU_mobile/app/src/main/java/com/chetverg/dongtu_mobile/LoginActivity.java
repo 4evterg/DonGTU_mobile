@@ -100,8 +100,8 @@ public class LoginActivity extends AppCompatActivity {
                 Adrdess = mAddress.getText().toString();
 
                 //Шифруем пароль прежде чем отсылать запрос
-               // password = md5.crypt(password);
-               // password = md5.crypt(password);
+                password = md5.crypt(password);
+                password = md5.crypt(password);
 
                 if (!login.isEmpty() && !password.isEmpty()) {
                     // login user
@@ -156,11 +156,14 @@ public class LoginActivity extends AppCompatActivity {
                         String third_name = user.getString("third_name");
                         String city = user.getString("city");
                         String country = user.getString("country");
+                        String cathedra = user.getString("cathedra");
+                        String group = user.getString("group");
+                        String post = user.getString("post");
 
 
 
                         // Inserting row in users table
-                        db.addUser(uid, name, second_name, third_name, city,  country);
+                        db.addUser(uid, name, second_name, third_name, city,  country, cathedra, group, post);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,

@@ -6,6 +6,9 @@
     <dimen name="activity_horizontal_margin">0dp</dimen>
     <dimen name="text_margin">5dp</dimen>
 
+    //высота линиий отмечающей выбранную вкладку
+    <dimen name="tabIndicatorHeight">6dp</dimen>
+
     <dimen name="small_padding">16dp</dimen>
     <dimen name="nav_menu_text_items_margin">72dp</dimen>
     <dimen name="nav_menu_text_items_height">48dp</dimen>
@@ -17,6 +20,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="fab_size">64dp</dimen>
 
-    <dimen name="list_item_height">72dp</dimen>
+    <dimen name="list_item_height">60dp</dimen>
 
 </resources>

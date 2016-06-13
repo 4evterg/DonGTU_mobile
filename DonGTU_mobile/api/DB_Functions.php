@@ -62,16 +62,34 @@ class DB_Functions {
     public function getUserByEmailAndPassword($login, $password) {
 
         $user_get = "SELECT * FROM users WHERE username = '".$login."' AND password = '".$password."'";
+
         //$query =mysql_query($user_get);
 
         $stmt = $this->conn->prepare($user_get);
 
         if ($stmt->execute()) {
-            $user = $stmt->get_result()->fetch_assoc();
-            $stmt->close();
 
+            $user = $stmt->get_result()->fetch_assoc();
+            $query = "SELECT GN FROM groups WHERE ID = '".$user["GroupID"]."' ";
+            $result_group = $this->conn->prepare($query);
+            $query = "SELECT KafedraName FROM kafedra WHERE ID = '".$user["Kafedra"]."' ";
+            $result_cath = $this->conn->prepare($query);
+
+          if ($result_group->execute())  {
+            $group = $result_group->get_result()->fetch_assoc();               
+            $result_group->close();
+          }
+          if ($result_cath->execute())  {          
+            $cathedra  = $result_cath->get_result()->fetch_assoc();    
+            $result_cath ->close();
+          }
+            $user["GroupID"] = $group["GN"];
+            $user["Kafedra"] = $cathedra["KafedraName"];            
+            $stmt->close();
                 return $user;
         } 
+
+
 
        // $numrows=mysql_num_rows($query);
        // if($numrows!=0){
@@ -112,6 +130,7 @@ class DB_Functions {
             return NULL;
         }*/
     }
+
 
  /*   public function GetName(){
         return $name;
