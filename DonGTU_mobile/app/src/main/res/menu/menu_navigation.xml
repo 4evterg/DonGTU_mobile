@@ -3,15 +3,20 @@
 
     <group android:id="@+id/navigation_menu_main"
         android:checkableBehavior="single">
+
+        <!--расписание-->
         <item
             android:id="@+id/schedule"
             android:title="@string/menu_item_schedule"
             android:orderInCategory="1"
-            android:icon="@mipmap/ic_format_list_bulleted_type_white_24dp" />
+            android:icon="@mipmap/ic_format_list_numbers_grey600_24dp" />
+        <!-- курсы -->
         <item
-            android:title="@string/menu_item_events"
+            android:id="@+id/navigation_menu_courses_btn"
+            android:title="@string/menu_item_course"
             android:orderInCategory="2"
             android:icon="@mipmap/ic_format_list_bulleted_type_white_24dp" />
+        <!-- профиль -->
         <item
             android:id="@+id/navigation_menu_profile_btn"
             android:title="@string/profile"

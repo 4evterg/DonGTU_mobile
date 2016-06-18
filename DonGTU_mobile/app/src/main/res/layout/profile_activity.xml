@@ -26,7 +26,7 @@
                 android:background="@mipmap/profile"
                 android:scaleType="centerCrop"
                 >
-
+                <!-- тулбар -->
                 <android.support.design.widget.AppBarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -95,12 +95,7 @@
                     android:layout_height="@dimen/list_item_height"
                     android:gravity="center_vertical"
                     >
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        >
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -115,7 +110,6 @@
                             android:text="Medium Text"
                             android:id="@+id/profile_fio"
                         />
-                        </LinearLayout>
                 </LinearLayout>
 
                 //город
@@ -125,12 +119,7 @@
                     android:layout_height="@dimen/list_item_height"
                     android:gravity="center_vertical"
                     >
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        >
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -145,7 +134,7 @@
                             android:text="Medium Text"
                             android:id="@+id/profile_city"
                             />
-                    </LinearLayout>
+
                 </LinearLayout>
 
                 //кафеда
@@ -155,12 +144,6 @@
                     android:layout_height="@dimen/list_item_height"
                     android:gravity="center_vertical"
                     >
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        >
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -175,7 +158,6 @@
                             android:text="Medium Text"
                             android:id="@+id/profile_cathedra"
                             />
-                    </LinearLayout>
                 </LinearLayout>
 
                 //группа
@@ -185,12 +167,7 @@
                     android:layout_height="@dimen/list_item_height"
                     android:gravity="center_vertical"
                     >
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        >
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -205,7 +182,6 @@
                             android:text="Medium Text"
                             android:id="@+id/profile_group"
                             />
-                    </LinearLayout>
                 </LinearLayout>
 
                 //кафеда
@@ -215,12 +191,7 @@
                     android:layout_height="@dimen/list_item_height"
                     android:gravity="center_vertical"
                     >
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        >
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -235,59 +206,8 @@
                             android:text="Medium Text"
                             android:id="@+id/profile_post"
                             />
-                    </LinearLayout>
+
                 </LinearLayout>
-<!--
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/list_item_height"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/profile_city"
-                    android:text="Medium Text" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/list_item_height"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/profile_country"
-                    android:text="Medium Text" />-->
-
-                <!--<TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Medium Text" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Medium Text" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Medium Text" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Medium Text" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Medium Text" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Medium Text" />
-
-                <ListView
-                    android:id="@+id/profile_list"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:drawSelectorOnTop="false"
-                    />-->
             </LinearLayout>
         </ScrollView>
         </LinearLayout>

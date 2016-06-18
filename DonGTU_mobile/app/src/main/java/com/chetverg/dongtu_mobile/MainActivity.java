@@ -153,6 +153,10 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent_profile);
                        // finish();
                         break;
+                    case R.id.navigation_menu_courses_btn:
+                        Intent intent_courses = new Intent(getApplicationContext(), CoursesActivity.class);
+                        startActivity(intent_courses);
+                        break;
                 }
                 return true;
             }

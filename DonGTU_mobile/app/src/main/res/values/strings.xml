@@ -6,6 +6,7 @@
     <string name="main_activity_menu">Меню</string>
     <string name="menu_item_schedule">Расписание</string>
     <string name="menu_item_events">События</string>
+    <string name="menu_item_course">Курсы</string>
     <string name="profile">Профиль</string>
 
 

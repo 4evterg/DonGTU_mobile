@@ -23,6 +23,9 @@
         <activity
             android:name=".ProfileActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".CoursesActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 
