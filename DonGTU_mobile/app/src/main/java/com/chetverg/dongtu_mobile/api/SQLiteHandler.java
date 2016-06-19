@@ -1,4 +1,4 @@
-package com.chetverg.dongtu_mobile;
+package com.chetverg.dongtu_mobile.api;
 
 /**
  * Created by chetverg on 01.06.16.
@@ -17,7 +17,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String TAG = SQLiteHandler.class.getSimpleName();
 
     // Версия БД для обновления структуры БД необходимо изменить значение
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
 
     //Название БД
     private static final String DATABASE_NAME = "DonGTU_DB";
@@ -36,6 +36,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_CATHEDRA = "cathedra";
     private static final String KEY_GROUP = "user_group";
     private static final String KEY_POST = "post";
+    private static final String KEY_PHOTO = "photo";
+
 
 
     public SQLiteHandler(Context context) {
@@ -56,7 +58,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 + KEY_COUNTRY + " TEXT,"
                 + KEY_CATHEDRA + " TEXT,"
                 + KEY_GROUP + " TEXT,"
-                + KEY_POST + " TEXT"
+                + KEY_POST + " TEXT,"
+                + KEY_PHOTO + " TEXT"
                 + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
 
@@ -83,7 +86,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String uid, String name, String surname, String third_name, String city, String country, String cathedra, String group, String post) {
+    public void addUser(String uid, String name, String surname, String third_name, String city, String country, String cathedra, String group, String post, String photo) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -96,7 +99,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put(KEY_CATHEDRA, cathedra); //
         values.put(KEY_GROUP, group); //
         values.put(KEY_POST, post); //
-
+        values.put(KEY_PHOTO, photo); //
 
         // Inserting Row
         long id = db.insert(TABLE_USER, null, values);
@@ -126,6 +129,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
             user.put(KEY_CATHEDRA, cursor.getString(7));
             user.put(KEY_GROUP, cursor.getString(8));
             user.put(KEY_POST, cursor.getString(9));
+            user.put(KEY_PHOTO, cursor.getString(10));
             //user.put("privilegue_level", String.valueOf(cursor.getInt(3)));
         }
         cursor.close();

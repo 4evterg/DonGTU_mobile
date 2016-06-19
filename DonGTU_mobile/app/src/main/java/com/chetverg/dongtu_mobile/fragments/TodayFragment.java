@@ -1,6 +1,5 @@
 package com.chetverg.dongtu_mobile.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.chetverg.dongtu_mobile.R;
-import com.chetverg.dongtu_mobile.SQLiteHandler;
+import com.chetverg.dongtu_mobile.api.SQLiteHandler;
 
 import java.util.HashMap;
 
@@ -42,14 +41,14 @@ public class TodayFragment extends Fragment{
         String uid = user.get("uid");
         String name = user.get("name");
         String surname = user.get("second_name");
-        String third_name = user.get("third_name");
+        String third_name = user.get("photo");
 
         View tv_uid = view.findViewById(R.id.user_id);
         View tv_name = view.findViewById(R.id.user_name);
         View tv_surname = view.findViewById(R.id.user_surname);
         View tv_thirdname = view.findViewById(R.id.user_thirdname);
 
-        ((TextView)tv_uid).setText(uid);
+        ((TextView)tv_uid).setText(getActivity().getApplicationContext().getFilesDir().toString());
         ((TextView)tv_name).setText(name);
         ((TextView)tv_surname).setText(surname);
         ((TextView)tv_thirdname).setText(third_name);

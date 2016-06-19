@@ -1,4 +1,4 @@
-package com.chetverg.dongtu_mobile;
+package com.chetverg.dongtu_mobile.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,6 +14,12 @@ import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.chetverg.dongtu_mobile.Constants;
+import com.chetverg.dongtu_mobile.R;
+import com.chetverg.dongtu_mobile.api.AppController;
+import com.chetverg.dongtu_mobile.api.SQLiteHandler;
+import com.chetverg.dongtu_mobile.api.SessionManager;
+import com.chetverg.dongtu_mobile.api.md5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -159,11 +165,12 @@ public class LoginActivity extends AppCompatActivity {
                         String cathedra = user.getString("cathedra");
                         String group = user.getString("group");
                         String post = user.getString("post");
+                        String photo = user.getString("photo");
 
 
 
                         // Inserting row in users table
-                        db.addUser(uid, name, second_name, third_name, city,  country, cathedra, group, post);
+                        db.addUser(uid, name, second_name, third_name, city,  country, cathedra, group, post, photo);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,

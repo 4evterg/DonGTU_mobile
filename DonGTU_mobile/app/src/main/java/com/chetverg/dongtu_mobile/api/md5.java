@@ -1,4 +1,4 @@
-package com.chetverg.dongtu_mobile;
+package com.chetverg.dongtu_mobile.api;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

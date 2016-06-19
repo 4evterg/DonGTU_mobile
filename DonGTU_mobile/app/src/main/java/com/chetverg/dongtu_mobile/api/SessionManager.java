@@ -1,4 +1,4 @@
-package com.chetverg.dongtu_mobile;
+package com.chetverg.dongtu_mobile.api;
 
 /**
  * Created by chetverg on 01.06.16.

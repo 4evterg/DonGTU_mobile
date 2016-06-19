@@ -1,4 +1,4 @@
-package com.chetverg.dongtu_mobile;
+package com.chetverg.dongtu_mobile.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.chetverg.dongtu_mobile.R;
+import com.chetverg.dongtu_mobile.api.SQLiteHandler;
+import com.chetverg.dongtu_mobile.api.SessionManager;
 
 import java.util.HashMap;
 

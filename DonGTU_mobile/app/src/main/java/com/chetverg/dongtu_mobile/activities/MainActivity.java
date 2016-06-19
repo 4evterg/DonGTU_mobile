@@ -1,8 +1,9 @@
-package com.chetverg.dongtu_mobile;
+package com.chetverg.dongtu_mobile.activities;
 
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -15,9 +16,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chetverg.dongtu_mobile.Constants;
+import com.chetverg.dongtu_mobile.R;
 import com.chetverg.dongtu_mobile.adapter.TabsPagerFragmentAdapter;
+import com.chetverg.dongtu_mobile.api.SQLiteHandler;
+import com.chetverg.dongtu_mobile.api.SessionManager;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.HashMap;
 
@@ -38,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     //имя фамилия пользователя в боковой панели
     private TextView user_name;
     private TextView user_surname;
+    private ImageView user_photo;
 
     private FloatingActionButton FAB;
 
@@ -129,9 +138,14 @@ public class MainActivity extends AppCompatActivity {
         View header = NView.getHeaderView(0);
         user_name = (TextView)header.findViewById(R.id.nav_header_username);
         user_surname = (TextView)header.findViewById(R.id.nav_header_usersurname);
+        user_photo = (ImageView)header.findViewById(R.id.nav_menu_photo);
+
+
+        setPhoto(user.get("photo"), user_photo);
+
+
         user_name.setText(user.get("name"));
         user_surname.setText(" " + user.get("second_name"));
-
 
         assert NView != null;
         NView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -148,11 +162,12 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navigation_menu_logout_btn:
                         logoutUser();
                         break;
+                    //переход на страницу профиля
                     case R.id.navigation_menu_profile_btn:
                         Intent intent_profile = new Intent(getApplicationContext(), ProfileActivity.class);
                         startActivity(intent_profile);
-                       // finish();
                         break;
+                    //переход на страницу списка курсов
                     case R.id.navigation_menu_courses_btn:
                         Intent intent_courses = new Intent(getApplicationContext(), CoursesActivity.class);
                         startActivity(intent_courses);
@@ -193,5 +208,12 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    private void setPhoto(String photo_url, ImageView photo_view){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
+        imageLoader.displayImage(photo_url, photo_view);
+    }
 
 }

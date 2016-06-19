@@ -20,11 +20,12 @@
 
             <!-- Шапка -->
             <LinearLayout
+                android:id="@+id/profile_photo"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@mipmap/profile"
-                android:scaleType="centerCrop"
+                android:scaleType="centerInside"
                 >
                 <!-- тулбар -->
                 <android.support.design.widget.AppBarLayout
@@ -78,6 +79,12 @@
 
             <!-- Блок информации-->
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/small_padding"
+                android:layout_margin="@dimen/card_margin">
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
@@ -210,6 +217,7 @@
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
+ </android.support.v7.widget.CardView>
         </LinearLayout>
 
         <!-- экшн-кнопочка -->
@@ -230,13 +238,13 @@
     </android.support.design.widget.CoordinatorLayout>
 
     <!-- Боковое меню/панель-->
-    <android.support.design.widget.NavigationView
-        android:id="@+id/navigation"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:menu="@menu/menu_navigation"
-        app:headerLayout="@layout/navigation_header" />
+    <!--<android.support.design.widget.NavigationView-->
+        <!--android:id="@+id/navigation"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="start"-->
+        <!--app:menu="@menu/menu_navigation"-->
+        <!--app:headerLayout="@layout/navigation_header" />-->
 
 
 

@@ -1,4 +1,4 @@
-package com.chetverg.dongtu_mobile;
+package com.chetverg.dongtu_mobile.api;
 
 import android.app.Application;
 import android.text.TextUtils;
