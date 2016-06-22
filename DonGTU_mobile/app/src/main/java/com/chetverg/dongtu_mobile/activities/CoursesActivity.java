@@ -66,10 +66,11 @@ public class CoursesActivity extends AppCompatActivity {
 
         initToolbar();
         initNavigationView();
-        addCard("Заголовок1", "Препод1", "go");
-        addCard("Заголовок2", "Препод2","go2");
+        addCard("Заголовок1", "Препод1", "1");
+        addCard("Заголовок2", "Препод2","2");
     }
 
+    //инициализация тулбара
     private void initToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         //Выставление заголовка тулбара
@@ -161,7 +162,7 @@ public class CoursesActivity extends AppCompatActivity {
         finish();
     }
 
-    public void addCard(String course_name, String lector, String action){
+    public void addCard(String course_name, String lector, final String course_id){
         mainsection = (LinearLayout) findViewById(R.id.courses_main_section);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         CardView cw = (CardView) inflater.inflate(R.layout.course_card_layout, null);
@@ -173,12 +174,13 @@ public class CoursesActivity extends AppCompatActivity {
 
         tv_lector.setText(lector);
         tv_course_name.setText(course_name);
-        tv_more.setText(action);
+        tv_more.setText(R.string.go);
         tv_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SingleCourseActivity.class);
-                startActivity(i);
+                i.putExtra(SingleCourseActivity.course_id, Integer.parseInt(course_id));
+                startActivityForResult(i, 0);
             }
         });
     }

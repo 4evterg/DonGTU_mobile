@@ -9,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -91,9 +90,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         //вызов тулбара
         initToolbar();
-        //вызов бового меню
-        //initNavigationView();
-
     }
 
 //обработка нажатия кнопки назад в тулбаре
@@ -132,60 +128,6 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     }
-
-    //инициализация бокового меню
-//    private void initNavigationView() {
-//        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-//
-//        //кнопка бокового меню
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
-//        drawerLayout.setDrawerListener(toggle);
-//        toggle.syncState();
-//
-//        //переход на вкладу при нажатии на пункт бокового меню
-//        NavigationView NView = (NavigationView) findViewById(R.id.navigation);
-//
-//
-//        //выставление имени и фамилии пользователя в шапке боковой панели
-//        db = new SQLiteHandler(getApplicationContext());
-//        HashMap<String, String> user = db.getUserDetails();
-//
-//        View header = NView.getHeaderView(0);
-//        user_title_name = (TextView)header.findViewById(R.id.nav_header_username);
-//        user_title_surname = (TextView)header.findViewById(R.id.nav_header_usersurname);
-//        user_title_name.setText(user.get("name"));
-//        user_title_surname.setText(" " + user.get("second_name"));
-//
-//
-//        assert NView != null;
-//        NView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(MenuItem item) {
-//                drawerLayout.closeDrawers();
-//                switch (item.getItemId()) {
-//                    //выход по кнопке в боковом меню
-//                    case R.id.schedule:
-//                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                        startActivity(intent);
-//
-//                        break;
-//                    case R.id.navigation_menu_logout_btn:
-//                        logoutUser();
-//                        break;
-//                    case R.id.navigation_menu_profile_btn:
-//                        Intent intent_profile = new Intent(getApplicationContext(), ProfileActivity.class);
-//                        startActivity(intent_profile);
-//                        break;
-//                    case R.id.navigation_menu_courses_btn:
-//                        Intent intent_courses = new Intent(getApplicationContext(), CoursesActivity.class);
-//                        startActivity(intent_courses);
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
-//    }
-
 
     private void logoutUser() {
         session.setLogin(false);
