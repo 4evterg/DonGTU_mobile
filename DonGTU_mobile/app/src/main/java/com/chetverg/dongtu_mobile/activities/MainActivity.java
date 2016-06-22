@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
     //имя фамилия пользователя в боковой панели
     private TextView user_name;
-    private TextView user_surname;
     private ImageView user_photo;
 
     private FloatingActionButton FAB;
@@ -137,15 +136,22 @@ public class MainActivity extends AppCompatActivity {
 
         View header = NView.getHeaderView(0);
         user_name = (TextView)header.findViewById(R.id.nav_header_username);
-        user_surname = (TextView)header.findViewById(R.id.nav_header_usersurname);
         user_photo = (ImageView)header.findViewById(R.id.nav_menu_photo);
 
 
         setPhoto(user.get("photo"), user_photo);
 
 
-        user_name.setText(user.get("name"));
-        user_surname.setText(" " + user.get("second_name"));
+        user_name.setText(user.get("name") + " " + user.get("second_name") + " " + user.get("user_group"));
+        user_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(i);
+            }
+        });
+
+
 
         assert NView != null;
         NView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

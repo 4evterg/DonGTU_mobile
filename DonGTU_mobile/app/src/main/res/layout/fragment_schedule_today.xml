@@ -16,7 +16,8 @@
 
         <!-- Еще один ЛЛ необходим для скролвью, т.к. скролл вью может содержать только один элемент-->
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical" android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/mainBackground">
 
@@ -44,6 +45,8 @@
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:text="Today 13!"/>
+                   <View
+                       style="@style/horizontal_line"/>
                    <TextView
                        android:id="@+id/user_thirdname"
                        android:layout_width="wrap_content"
@@ -53,16 +56,51 @@
 
             </android.support.v7.widget.CardView>
 
+
+
             <android.support.v7.widget.CardView
                 android:id="@+id/card_view2"
                 style="@style/CardViewStyle">
+                <LinearLayout
+                    style="@style/Widget.CardContent"                    >
 
-                <TextView
-                    android:id="@+id/info_text2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Today 2!"/>
+                    <!-- верхняя часть карточки-->
+                    <LinearLayout
+                        style="@style/Widget.CardContent_top">
+                        <!-- название -->
+                        <LinearLayout
+                            style="@style/course_name_wrap">
+                            <TextView
+                                style="@style/course_name"
+                                android:text="Предмет" />
+                        </LinearLayout>
+                        <!-- препод -->
+                        <LinearLayout
+                            style="@style/course_lector_wrap"
+                            >
+                            <TextView
+                                style="@style/course_lector"
+                                android:text="Препод" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                <!-- нижняя строчка-действие-->
+                    <LinearLayout
+                        style="@style/Widget.CardContent_bottom"
+                        >
+                            <TextView
+                                style="@style/Widget.CardContent_action"
+                                android:text="@string/more" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
             </android.support.v7.widget.CardView>
+
+
+
+
+
 
             <android.support.v7.widget.CardView
                 android:id="@+id/card_view3"

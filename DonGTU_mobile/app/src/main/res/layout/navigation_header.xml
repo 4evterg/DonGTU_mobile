@@ -13,7 +13,9 @@
         android:layout_height="112dp"
         android:id="@+id/nav_menu_photo"
         android:layout_gravity="top"
-        android:background="@android:drawable/ic_menu_camera"
+        android:padding="1dp"
+        android:background="@color/colorWhite"
+        android:src="@android:drawable/ic_menu_camera"
         android:scaleType="centerCrop" />
 
     <LinearLayout
@@ -24,8 +26,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/nav_menu_text_items_height"
-            android:layout_gravity="bottom">
+            android:layout_height="@dimen/nav_menu_text_items_height" >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -34,15 +35,8 @@
                 android:text="Medium "
                 android:id="@+id/nav_header_username"
                 android:textColor="@color/colorWhite"
-                android:layout_gravity="center_vertical"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/nav_header_usersurname"
-                android:textColor="@color/colorWhite"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="center_vertical"
+                android:clickable="true"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

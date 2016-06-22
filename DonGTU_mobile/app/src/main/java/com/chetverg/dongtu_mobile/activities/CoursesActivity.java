@@ -2,6 +2,7 @@ package com.chetverg.dongtu_mobile.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,12 +12,15 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chetverg.dongtu_mobile.R;
 import com.chetverg.dongtu_mobile.api.SQLiteHandler;
 import com.chetverg.dongtu_mobile.api.SessionManager;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.HashMap;
 
@@ -31,6 +35,8 @@ public class CoursesActivity extends AppCompatActivity {
     private SQLiteHandler db;
     private SessionManager session;
 
+    private ImageView user_photo;
+
 //карточки
     CardView card;
     LinearLayout cardInner;
@@ -43,7 +49,6 @@ public class CoursesActivity extends AppCompatActivity {
 
 //имя фамилия пользователя в заголовке
     private TextView user_title_name;
-    private TextView user_title_surname;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,10 +106,19 @@ public class CoursesActivity extends AppCompatActivity {
 
         View header = NView.getHeaderView(0);
         user_title_name = (TextView)header.findViewById(R.id.nav_header_username);
-        user_title_surname = (TextView)header.findViewById(R.id.nav_header_usersurname);
-        user_title_name.setText(user.get("name"));
-        user_title_surname.setText(" " + user.get("second_name"));
+        user_title_name.setText(user.get("name") + " " + user.get("second_name") + " " + user.get("user_group"));
+        user_title_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(i);
+            }
+        });
 
+        user_photo = (ImageView)header.findViewById(R.id.nav_menu_photo);
+
+
+        setPhoto(user.get("photo"), user_photo);
 
         assert NView != null;
         NView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -172,5 +186,14 @@ public class CoursesActivity extends AppCompatActivity {
         cardInner.addView(tv_title);
         cardInner.addView(tv_teacher);
     }
+
+    private void setPhoto(String photo_url, ImageView photo_view){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
+        imageLoader.displayImage(photo_url, photo_view);
+    }
+
 
 }

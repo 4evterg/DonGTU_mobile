@@ -15,7 +15,7 @@
     <dimen name="nav_menu_text_content_space">8dp</dimen>
 
 
-    <dimen name="card_margin">7dp</dimen>
+    <dimen name="card_margin">5dp</dimen>
     <dimen name="cards_height">150dp</dimen>
     <!-- Отступы для экшн-кнопочки -->
     <dimen name="fab_margin">16dp</dimen>
