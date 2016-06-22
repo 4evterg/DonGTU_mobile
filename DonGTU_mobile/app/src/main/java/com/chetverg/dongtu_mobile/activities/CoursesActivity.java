@@ -1,5 +1,6 @@
 package com.chetverg.dongtu_mobile.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -10,8 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,11 +42,11 @@ public class CoursesActivity extends AppCompatActivity {
 
 //карточки
     CardView card;
-    LinearLayout cardInner;
+    LinearLayout card_content;
     LinearLayout mainsection;
-    TextView tv_title;
-    TextView tv_teacher;
-    TextView tv_dicrip;
+    TextView tv_course_name;
+    TextView tv_lector;
+    TextView tv_more;
     LinearLayout.LayoutParams layout_params;
 
 
@@ -63,8 +66,8 @@ public class CoursesActivity extends AppCompatActivity {
 
         initToolbar();
         initNavigationView();
-        addCard("Заголовок1", "Препод1");
-        addCard("Заголовок2", "Препод2");
+        addCard("Заголовок1", "Препод1", "go");
+        addCard("Заголовок2", "Препод2","go2");
     }
 
     private void initToolbar(){
@@ -158,33 +161,26 @@ public class CoursesActivity extends AppCompatActivity {
         finish();
     }
 
-    public void addCard(String title, String teacher ){
+    public void addCard(String course_name, String lector, String action){
         mainsection = (LinearLayout) findViewById(R.id.courses_main_section);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        CardView cw = (CardView) inflater.inflate(R.layout.course_card_layout, null);
+        cw.setLayoutParams(new CardView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        mainsection.addView(cw);
+        tv_lector = (TextView)cw.findViewById(R.id.course_lector);
+        tv_course_name = (TextView)cw.findViewById(R.id.course_name);
+        tv_more = (TextView)cw.findViewById(R.id.course_go);
 
-        card = new CardView(new ContextThemeWrapper(getApplicationContext(), R.style.CardViewStyle), null, 0);
-        cardInner = new LinearLayout(new ContextThemeWrapper(getApplicationContext(), R.style.Widget_CardContent));
-
-        tv_title = new TextView(this);
-        tv_teacher  = new TextView(this);
-
-        layout_params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-//применять стиль необходимо именно тут, т.к. далее стиль изменяется
-        tv_title.setLayoutParams(layout_params);
-        tv_teacher.setLayoutParams(layout_params);
-        tv_title.setText(title);
-        tv_teacher.setText(teacher);
-
-
-        int margins = 5;
-        layout_params.setMargins(margins, margins, margins, margins);
-        card.setLayoutParams(layout_params);
-
-        mainsection.addView(card);
-        card.addView(cardInner);
-        cardInner.addView(tv_title);
-        cardInner.addView(tv_teacher);
+        tv_lector.setText(lector);
+        tv_course_name.setText(course_name);
+        tv_more.setText(action);
+        tv_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SingleCourseActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void setPhoto(String photo_url, ImageView photo_view){
