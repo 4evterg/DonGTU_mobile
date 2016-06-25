@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/mainBackground">
+    android:layout_height="match_parent">
 
+    <!-- тулбар -->
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,23 +20,5 @@
             app:titleTextColor="@color/colorWhite" />
 
     </android.support.design.widget.AppBarLayout>
-    <android.support.v7.widget.CardView
-        android:id="@+id/single_course_cw"
-        style="@style/CardViewStyle"
-        android:layout_height="wrap_content"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Large Text"
-            android:id="@+id/single_course_tw"
-            android:layout_gravity="start|bottom"
-            android:textColor="@color/blackColor"
-            android:layout_margin="10dp"/>
-
-    </android.support.v7.widget.CardView>
-
 
 </LinearLayout>

@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.chetverg.dongtu_mobile.Constants;
 import com.chetverg.dongtu_mobile.R;
+import com.chetverg.dongtu_mobile.SlideMenu;
 import com.chetverg.dongtu_mobile.adapter.TabsPagerFragmentAdapter;
 import com.chetverg.dongtu_mobile.api.SQLiteHandler;
 import com.chetverg.dongtu_mobile.api.SessionManager;
@@ -69,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
         initToolbar();
         //вызов меню
         initNavigationView();
+
+        //SlideMenu slideMenu = new SlideMenu(getApplicationContext(), toolbar);
+        //slideMenu.runMenu();
+
        // SlideMenu sl = new SlideMenu(getApplicationContext());
        // sl.runMenu();
 

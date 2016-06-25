@@ -2,13 +2,13 @@ package com.chetverg.dongtu_mobile.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chetverg.dongtu_mobile.R;
+import com.chetverg.dongtu_mobile.SlideMenu;
 import com.chetverg.dongtu_mobile.api.SQLiteHandler;
 import com.chetverg.dongtu_mobile.api.SessionManager;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -66,8 +67,23 @@ public class CoursesActivity extends AppCompatActivity {
 
         initToolbar();
         initNavigationView();
-        addCard("Заголовок1", "Препод1", "1");
-        addCard("Заголовок2", "Препод2","2");
+       // SlideMenu slideMenu = new SlideMenu(getApplicationContext(), toolbar);
+        //slideMenu.runMenu();
+
+        SharedPreferences sp = getApplicationContext().getSharedPreferences("user", 0);
+        String username = sp.getString("login", "root");
+
+        if(username.equals("Root") || username.equals("root")) {
+            addCard("Физика", "Животенко А.Н.");
+            addCard("Программирование", "Животенко А.Н.");
+
+            addCard("Охрана труда", "Гуръев В.В.");
+        }else{
+            addCard("Физика", "Животенко А.Н.");
+            addCard("Культурология", "Заика С.С.");
+        }
+
+
     }
 
     //инициализация тулбара
@@ -162,7 +178,7 @@ public class CoursesActivity extends AppCompatActivity {
         finish();
     }
 
-    public void addCard(String course_name, String lector, final String course_id){
+    public void addCard(final String course_name, String lector){
         mainsection = (LinearLayout) findViewById(R.id.courses_main_section);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         CardView cw = (CardView) inflater.inflate(R.layout.course_card_layout, null);
@@ -178,9 +194,11 @@ public class CoursesActivity extends AppCompatActivity {
         tv_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SingleCourseActivity.class);
-                i.putExtra(SingleCourseActivity.course_id, Integer.parseInt(course_id));
-                startActivityForResult(i, 0);
+/*                Intent i = new Intent(getApplicationContext(), SingleCourseActivity.class);
+                i.putExtra(SingleCourseActivity.course_id, course_name);
+                startActivityForResult(i, 0);*/
+                Intent i = new Intent(getApplicationContext(), PreCourseActivity.class);
+                startActivity(i);
             }
         });
     }

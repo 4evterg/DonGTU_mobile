@@ -2,6 +2,7 @@ package com.chetverg.dongtu_mobile.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mIputPassword; //объявление поля пароля
     private Button mBackDoor;
     private EditText mAddress;
-    private String Adrdess;
+    private String address_string;
 
 
     //инициализация формы входа
@@ -80,20 +81,20 @@ public class LoginActivity extends AppCompatActivity {
         // Check if user is already logged in or not
         if (session.isLoggedIn()) {
             // User is already logged in. Take him to main activity
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, CoursesActivity.class);
             startActivity(intent);
             finish();
         }
 
         //Бэкдор :)
-        mBackDoor = (Button)findViewById(R.id.login_button_offline);
+/*        mBackDoor = (Button)findViewById(R.id.login_button_offline);
         mBackDoor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i  = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(i); //Не забыть изменить на просто стартактивити
             }
-        });
+        });*/
 
         //
         mLoginButton = (Button)findViewById(R.id.login_button);
@@ -103,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 String login = mInputLogin.getText().toString().trim();
                 String password = mIputPassword.getText().toString().trim();
-                Adrdess = mAddress.getText().toString();
+                address_string = mAddress.getText().toString();
 
                 //Шифруем пароль прежде чем отсылать запрос
                 password = md5.crypt(password);
@@ -131,13 +132,25 @@ public class LoginActivity extends AppCompatActivity {
         pDialog.setMessage("Выполняется вход ...");
         showDialog();
 
-        if (Adrdess=="" || Adrdess == null)
+        if (address_string.equals("") || address_string == null)
         {
-            Adrdess = Constants.URL_LOGIN;
+            address_string = Constants.URL_LOGIN;
         }
 
+        if(login.equals("Kkkk")){
+            Toast.makeText(getApplicationContext(),
+                    "Не верные имя пользователя или пароль!", Toast.LENGTH_LONG).show();
+
+        }
+
+
+        SharedPreferences sp = getApplicationContext().getSharedPreferences("user", 0);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("login",login);
+        editor.apply();
+
         StringRequest strReq = new StringRequest(Method.POST,
-                Adrdess, new Response.Listener<String>() {
+                address_string, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -174,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,
-                                MainActivity.class);
+                                CoursesActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
@@ -186,7 +199,7 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     // JSON error
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
             }

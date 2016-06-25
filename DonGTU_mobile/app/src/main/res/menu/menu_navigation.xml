@@ -22,6 +22,12 @@
             android:title="@string/profile"
             android:orderInCategory="3"
             android:icon="@android:drawable/ic_menu_compass" />
+        <!-- настройки -->
+        <item
+            android:id="@+id/navigation_menu_settings_btn"
+            android:title="Настройки"
+            android:orderInCategory="3"
+            android:icon="@mipmap/ic_settings_grey600_24dp" />
 
     </group>
 

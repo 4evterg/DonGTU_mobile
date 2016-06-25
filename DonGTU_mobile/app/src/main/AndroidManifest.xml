@@ -34,6 +34,9 @@
         <activity
             android:name=".activities.SingleCourseActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.PreCourseActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

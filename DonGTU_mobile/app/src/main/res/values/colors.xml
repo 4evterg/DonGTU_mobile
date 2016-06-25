@@ -7,5 +7,6 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="profile_toolbar">#00ffffff</color>
     <color name="greyColor">#C0C0C0</color>
+    <color name="blackColor">#000000</color>
 
 </resources>

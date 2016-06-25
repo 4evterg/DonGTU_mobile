@@ -11,7 +11,7 @@ public class Constants {
     public static final int TAB_THREE = 2;
 
     //ДО логин
-    public static String URL_LOGIN = "http://192.168.0.103/do/api/login.php";
+    public static String URL_LOGIN = "http://192.168.0.102/do/api/login.php";
     //public static String URL_LOGIN = "http://4evterg.16mb.com/do/api/login.php";
 
  /*   //версия БД для обновления структуры БД необходимо изменить значение
