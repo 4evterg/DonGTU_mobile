@@ -10,7 +10,7 @@
     <string name="profile">Профиль</string>
 
 
-    //логин
+    <!--логин-->
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
     <string name="login_remember_me">Запомнить меня</string>
@@ -24,12 +24,21 @@
     <string name="go">Перейти</string>
 
 
-    //переменные для странички профиля
+    <!--переменные для странички профиля-->
     <string name="fio">"ФИО: "</string>
     <string name="city">"Место проживания: "</string>
     <string name="cathedra">"Кафедра: "</string>
     <string name="group">"Группа: "</string>
     <string name="post">"Должность: "</string>
+
+    <!-- переменные для пре-курса -->
+    <string name="precourse_see">Просмотр</string>
+    <string name="precourse_tasks">Задания</string>
+    <string name="precourse_materials">Материалы</string>
+    <string name="precourse_members">Участники</string>
+    <string name="precourse_events">События</string>
+    <string name="precourse_extra">Дополнительная информация</string>
+
 
 
 </resources>

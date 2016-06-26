@@ -19,6 +19,13 @@
     </style>
 
 
+    <style name="Stnadart_content_form">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+
+    </style>
+
+
 
     <!-- стиль карточек -->
     <style name="CardViewStyle" parent="CardView">

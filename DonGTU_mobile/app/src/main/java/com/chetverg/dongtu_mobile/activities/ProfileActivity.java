@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -42,7 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView user_cathedra;
     private TextView user_group;
     private TextView user_post;
-    private LinearLayout user_main_photo;
+    private ImageView user_main_photo;
 
 
     private SQLiteHandler db;
@@ -73,9 +74,10 @@ public class ProfileActivity extends AppCompatActivity {
         user_cathedra = (TextView)findViewById(R.id.profile_cathedra);
         user_group = (TextView)findViewById(R.id.profile_group);
         user_post = (TextView)findViewById(R.id.profile_post);
-        user_main_photo = (LinearLayout)findViewById(R.id.profile_photo);
+        user_main_photo = (ImageView)findViewById(R.id.profile_photo);
 
         setPhoto(user.get("photo"), user_main_photo);
+
 
         user_title_name.setText(user.get("name"));
         user_title_surname.setText(" " + user.get("second_name"));
@@ -139,13 +141,13 @@ public class ProfileActivity extends AppCompatActivity {
         finish();
     }
 
-    private void setPhoto(String photo_url, LinearLayout main_photo){
+    private void setPhoto(String photo_url, ImageView main_photo){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
         Drawable d = new BitmapDrawable(getResources(), imageLoader.loadImageSync(photo_url));
-        main_photo.setBackground(d);
+        main_photo.setImageDrawable(d);
        // imageLoader.displayImage(photo_url, photo_view);
     }
 

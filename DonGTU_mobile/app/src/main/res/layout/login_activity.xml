@@ -35,7 +35,7 @@
                 android:hint="Адрес Сервера"
                 android:ems="10"
                 android:layout_gravity="start"
-                android:text="http://192.168.0.101/do/api/login.php"
+                android:text="http://192.168.0.102/do/api/login.php"
                 />
 
             <EditText
