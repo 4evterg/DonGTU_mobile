@@ -161,7 +161,6 @@ public class CoursesActivity extends AppCompatActivity {
                     case R.id.navigation_menu_courses_btn:
                         Intent intent_courses = new Intent(getApplicationContext(), CoursesActivity.class);
                         startActivity(intent_courses);
-                        finish();
                         break;
                 }
                 return true;
